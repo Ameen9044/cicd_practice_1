@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent {dockerfile true}
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Everything Successfull....'
             }
         }
     }
