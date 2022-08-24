@@ -6,6 +6,7 @@ def checkoutProject(){
    stage('Project code pull from Github'){
       echo "Pulling Code from Github"
      }
+ }
 def build() {
   stage('Maven Build'){
 	echo "Build Step"
