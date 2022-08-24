@@ -1,13 +1,15 @@
 node { 
    checkoutProject()
-   build()
+   build() 
 } 
 def checkoutProject(){
    stage('Project code pull from Github'){
       if(RepositoryName.equalsIgnoreCase("cicd_practice_1")){
 			checkout([$class: 'GitSCM',branches:[[name: master]], doGenerateSubmoduleConfigurations: false, extensions: [[$class:'CloneOption', depth: 0, noTags: false, reference: '', shallow: false, timeout: 60]], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Ameen9044/cicd_practice_1.git' ]]])
 			 
-      }else{ "No Branch to Checkout " } 
+      }else{ 
+       "No Branch to Checkout" 
+      } 
 
 def build() {
   stage('Maven Build'){
@@ -16,4 +18,3 @@ def build() {
         echo "This is maven build"
     }
   }
-}
