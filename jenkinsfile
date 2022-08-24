@@ -10,7 +10,9 @@ def checkoutProject(){
 def build() {
   stage('Maven Build'){
 	echo "Build Step"
-        sh 'clean install'
+	def mvnHome = tool 'M3'
+        def javaHome = tool 'java1.8'
+	sh "JAVA_HOME=$javaHome $mvnHome/bin/mvn clean install"
         echo "This is maven build"
     }
 }
