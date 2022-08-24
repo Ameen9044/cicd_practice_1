@@ -1,4 +1,6 @@
 node { 
+   def mvnHome = tool 'M3'
+   def javaHome = tool 'java1.8'
    checkoutProject()
    build() 
 } 
