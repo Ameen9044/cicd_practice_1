@@ -1,21 +1,19 @@
-pipeline {
-    agent {dockerfile true}
+node { 
+   checkoutProject()
+   build()
+} 
+def checkoutProject(){
+   stage('Project code pull from Github'){
+      if(RepositoryName.equalsIgnoreCase("cicd_practice_1")){
+			checkout([$class: 'GitSCM',branches:[[name: master]], doGenerateSubmoduleConfigurations: false, extensions: [[$class:'CloneOption', depth: 0, noTags: false, reference: '', shallow: false, timeout: 60]], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Ameen9044/cicd_practice_1.git' ]]])
+			 
+      }else{ "No Branch to Checkout " } 
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Everything Successfull....'
-            }
-        }
+def build() {
+  stage('Maven Build'){
+	echo "Build Step"
+        sh 'clean install'
+        echo "This is maven build"
     }
+  }
 }
