@@ -20,7 +20,7 @@ def build() {
         echo "This is maven build"
     }
 }
-def dockerimage()
+def dockerImage()
 {
   echo "Creating Docker Image"
   docker.build("test_app_1","-f Dockerfile-test_1 .")
