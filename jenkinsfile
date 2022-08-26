@@ -24,8 +24,5 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  def mvnHome = tool 'M3'
-  def javaHome = tool 'java1.8'
-  def dockerHome = tool 'MyDocker'
-  docker.build("test_app_1","-f Dockerfile-test_1 .")
+  docker build -t myjenkins-blueocean:2.346.3-1 .
 }
