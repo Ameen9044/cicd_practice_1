@@ -23,5 +23,7 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  docker.build("test_app_1","-f Dockerfile-test_1 .")
+  def mvnHome = tool 'M3'
+  def javaHome = tool 'java1.8'
+  sh "JAVA_HOME=$javaHome $mvnHome/bin/mvn docker:build"
 }
