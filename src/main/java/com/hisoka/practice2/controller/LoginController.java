@@ -15,7 +15,7 @@ public class LoginController {
     {
         String errorMessage=null;
         if (error!=null)
-        {
+        { 
             errorMessage="Username or password incorrect!!";
         }
         model.addAttribute("errorMessage",errorMessage);
