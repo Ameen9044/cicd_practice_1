@@ -26,3 +26,13 @@ def dockerImage()
   echo "Creating Docker Image"
   "docker build -t myjenkins-blueocean:2.346.3-1 ."
 }
+def pushToAWS()
+{
+  stage('Pushing Image to ECR')
+{
+  docker.withRegistry("527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1", "ecr:us-east-1:credential-id") {
+  docker.image("Dockerfile-test_1").push()
+}
+
+}
+}
