@@ -31,8 +31,7 @@ def pushToAWS()
 {
   stage('Pushing Image to ECR')
 {
-  docker.withAWS(credentials: 'hisoka',"527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1") {
-  docker.image("Dockerfile-test_1").push()
+  sh "docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:lastest"
 }
 
 }
