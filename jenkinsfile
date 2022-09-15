@@ -33,6 +33,4 @@ def pushToAWS()
 {
   sh "docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:lastest"
 }
-
-}
 }
