@@ -29,6 +29,6 @@ def dockerImage()
 }
 def pushToAWS(){
   stage('Pushing Image to ECR'){
-  sh "docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:lastest"
+  sh "docker push public.ecr.aws/h9g0y4c6/hisoka_test_1"
    }
 }
