@@ -29,9 +29,11 @@ def dockerImage()
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-        docker_repo_uri="527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1"
-       "docker build -t myfirstImage . "
-       sh "aws ecr get-login --no-include-email --region ${region} | sh"
-       sh "docker push myfirstImage"
+        def ScriptsPath = "/var/lib/jenkins/deployscripts/UAT"
+	def CredFile = "/var/lib/jenkins/.aws/credentials"
+	echo "Push to ECR Repository"
+	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
+	sh "aws ecr get-login --no-include-email --region ${region} | sh"
+	'docker push myfirstImage'
 }
 }
