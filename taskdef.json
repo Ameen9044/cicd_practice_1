@@ -1,5 +1,5 @@
 {
-    "family": "first-run-task-definition:4",
+    "family": "first-run-task-definition",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
