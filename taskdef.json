@@ -3,8 +3,8 @@
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "sample-app",
-            "image": "{{image}}",
+            "name": "hisoka-app",
+            "image": "latest",
             "portMappings": [
                 {
                     "containerPort": 9000,
