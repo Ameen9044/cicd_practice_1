@@ -5,7 +5,7 @@ node {
    checkoutProject()
    build() 
    dockerImage()
-   pushToAWS()
+   pushtoAWS()
 } 
 def checkoutProject(){
    stage('Project code pull from Github'){
