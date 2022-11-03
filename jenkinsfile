@@ -29,8 +29,8 @@ def dockerImage()
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-	def ScriptsPath = "/Volumes/MyMac-2/practice2/cicdScripts"
-	def CredFile = "/Volumes/MyMac-2/practice2/cicdScripts/.aws/credentials"
+	def ScriptsPath = "/Users/ameenahmad/.jenkins/workspace/auto_build_pipeline_1/cicdScripts"
+	def CredFile = "/Users/ameenahmad/.jenkins/workspace/auto_build_pipeline_1/cicdScripts/.aws/credentials"
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
