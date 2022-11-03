@@ -29,7 +29,7 @@ def dockerImage()
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-	sh "/usr/local/bin/aws ecr get-login-password --no-include-email --region us-east-1 | sh"
+	sh "/usr/local/bin/aws ecr get-login --no-include-email"
 	echo "Pushed Hisoka image to AWS ECR"
 	
 }
