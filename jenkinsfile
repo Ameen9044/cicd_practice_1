@@ -33,7 +33,7 @@ def pushtoAWS () {
 	def CredFile = "/var/lib/jenkins/.aws/credentials"
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
-	sh "aws ecr get-login --no-include-email --region ${region} | sh"
+	sh "aws ecr get-login --no-include-email --region us-east-1 | sh"
 	'docker push myfirstImage'
 }
 }
