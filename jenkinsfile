@@ -25,7 +25,6 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  "docker build -t myfirstImage . "
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
@@ -33,7 +32,9 @@ def pushtoAWS () {
 	def CredFile = "/var/lib/jenkins/.aws/credentials"
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
-	sh "aws ecr get-login --no-include-email --region us-east-1 | sh"
-	'docker push myfirstImage'
+	sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 527681342360.dkr.ecr.us-east-1.amazonaws.com"
+	'docker build -t hisoka_test_1 .'
+	'docker tag hisoka_test_1:latest 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest'
+	'docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest'
 }
 }
