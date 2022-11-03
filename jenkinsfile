@@ -29,12 +29,13 @@ def dockerImage()
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-	dockerr="/usr/local/bin/docker"
+	docker_repo_uri="527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1"
 	sh "/usr/local/bin/aws ecr get-login-password --region us-east-1 | /usr/local/bin/docker login --username AWS --password-stdin 527681342360.dkr.ecr.us-east-1.amazonaws.com"
 	sh "/usr/local/bin/docker build -t hisoka_test_1 ."
 	sh "/usr/local/bin/docker tag hisoka_test_1:latest 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest"
 	sh "/usr/local/bin/docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest"
 	echo "Pushed Hisoka image to AWS ECR"
+	sh "sed -i 's|{{image}}|${docker_repo_uri}|' taskdef.json"
 	sh "aws ecs register-task-definition --execution-role-arn arn:aws:iam::527681342360:role/ecsTaskExecutionRole --cli-input-json file://taskdef.json --region us-east-1"
 	sh "aws ecs update-service --cluster jenkinsContainer --service jenkinsServiceName --task-definition arn:aws:ecs:us-east-1:527681342360:task-definition/first-run-task-definition:4 --region us-east-1"
         echo "App deployed to ECS Container"
