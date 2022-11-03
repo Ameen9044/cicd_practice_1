@@ -25,7 +25,7 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  docker.build("sampleImage" ,"-f hisoka-first .")
+  /usr/local/bin/docker.build("sampleImage" ,"-f hisoka-first .")
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
