@@ -25,11 +25,12 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  "/usr/loca/bin/docker build -t hisoka_test_1 ."
+  "/usr/local/bin/docker build -t hisoka_test_1 ."
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-	sh "/usr/local/bin/aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 527681342360.dkr.ecr.us-east-1.amazonaws.com"
+	dockerr="/usr/local/bin/docker"
+	sh "/usr/local/bin/aws ecr get-login-password --region us-east-1 | $docker login --username AWS --password-stdin 527681342360.dkr.ecr.us-east-1.amazonaws.com"
 	echo "Pushed Hisoka image to AWS ECR"
 	
 }
