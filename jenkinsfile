@@ -36,9 +36,9 @@ def pushtoAWS () {
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
 	AWS="/usr/local/bin/aws --profile $AWS_Profile"
 	DOCKER_LOGIN="$AWS ecr get-login --no-include-email"
-	eval $DOCKER_LOGIN
-	"/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
-	"/usr/loca/bin/docker push $AWS_Repo"
+	sh "eval $DOCKER_LOGIN"
+	sh "/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
+	sh "/usr/loca/bin/docker push $AWS_Repo"
 	echo "Pushed Hisoka image to AWS ECR"
 	
 }
