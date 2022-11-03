@@ -25,10 +25,13 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  "docker build -t myjenkins-blueocean:2.346.3-1 ."
+  "docker build -t myfirstImage . "
 }
-def pushToAWS(){
-  stage('Pushing Image to ECR'){
-  sh "docker push public.ecr.aws/h9g0y4c6/hisoka_test_1"
-   }
+def pushtoAWS (RepositoryName) {
+	stage ('Docker image push to AWS ECR') {
+        docker_repo_uri="527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1"
+       "docker build -t myfirstImage . "
+       sh "aws ecr get-login --no-include-email --region ${region} | sh"
+       sh "docker push myfirstImage"
+}
 }
