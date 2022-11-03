@@ -34,12 +34,12 @@ def pushtoAWS () {
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
-	AWS="/usr/bin/aws --profile ${aws_profile}"
-        "DOCKER_LOGIN=$(${AWS} ecr get-login --no-include-email)"
-	"eval ${DOCKER_LOGIN}"
-	"/usr/loca/bin/docker tag hisoka_test_1 ${AWS_Repo}"
-	"/usr/loca/bin/docker push ${AWS_Repo}"
-	echo "Pushed Hisoka image to AWS ECR "
+	AWS="/usr/bin/aws --profile $AWS_Profile"
+        DOCKER_LOGIN=$($AWS ecr get-login --no-include-email)
+	eval $DOCKER_LOGIN
+	"/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
+	"/usr/loca/bin/docker push $AWS_Repo"
+	echo "Pushed Hisoka image to AWS ECR"
 	
 }
 }
