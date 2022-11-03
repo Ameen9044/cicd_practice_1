@@ -25,7 +25,7 @@ def build() {
 def dockerImage()
 {
   echo "Creating Docker Image"
-  "docker build -t hisoka_test_1 ."
+  docker.build("sampleImage" ,"-f hisoka-first .")
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
@@ -34,7 +34,7 @@ def pushtoAWS () {
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
-	sh "$ScriptsPath/wrapper_ecr_push.sh page-content $AWS_Repo $AWS_Profile $CredFile"
+	sh "$ScriptsPath/wrapper_ecr_push.sh sampleImage $AWS_Repo $AWS_Profile $CredFile"
 	echo "Pushed Hisoka image to AWS ECR "
 	
 }
