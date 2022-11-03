@@ -35,7 +35,7 @@ def pushtoAWS () {
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
 	AWS="/usr/local/bin/aws --profile $AWS_Profile"
-        sh "/usr/local/bin/aws ecr get-login-password --region us-east-1 | /usr/loca/bin/docker login --username ameen --password Skeleton@1994 527681342360.dkr.ecr.us-east-1.amazonaws.com"
+        sh "/usr/local/bin/aws ecr get-login-password --region us-east-1 | /usr/loca/bin/docker login --username AWS --password-stdin 527681342360.dkr.ecr.us-east-1.amazonaws.com"
 	eval $DOCKER_LOGIN
 	"/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
 	"/usr/loca/bin/docker push $AWS_Repo"
