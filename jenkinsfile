@@ -34,7 +34,7 @@ def pushtoAWS () {
 	echo "Push to ECR Repository"
 	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
 	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
-	AWS="/usr/bin/aws --profile $AWS_Profile"
+	AWS="/usr/local/bin/aws --profile $AWS_Profile"
         sh "$AWS ecr get-login --no-include-email"
 	eval $DOCKER_LOGIN
 	"/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
