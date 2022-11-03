@@ -29,16 +29,7 @@ def dockerImage()
 }
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
-	def ScriptsPath = "/Users/ameenahmad/.jenkins/workspace/auto_build_pipeline_1/cicdScripts"
-	def CredFile = "/Users/ameenahmad/.jenkins/workspace/auto_build_pipeline_1/cicdScripts/.aws/credentials"
-	echo "Push to ECR Repository"
-	AWS_Repo ='527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1'
-	AWS_Profile ='AKIAXVXCCJOMJTJREO5B'
-	sh "AWS=/usr/local/bin/aws --profile $AWS_Profile"
-	sh "DOCKER_LOGIN=$AWS ecr get-login --no-include-email"
-	sh "eval $DOCKER_LOGIN"
-	sh "/usr/loca/bin/docker tag hisoka_test_1 $AWS_Repo"
-	sh "/usr/loca/bin/docker push $AWS_Repo"
+	sh "/usr/local/bin/aws ecr get-login --no-include-email --region us-east-1 | sh"
 	echo "Pushed Hisoka image to AWS ECR"
 	
 }
