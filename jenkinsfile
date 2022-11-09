@@ -37,6 +37,6 @@ def pushtoAWS () {
 	echo "Pushed Hisoka image to AWS ECR"
 	sh "/usr/local/bin/aws ecs register-task-definition --execution-role-arn arn:aws:iam::527681342360:role/ecsTaskExecutionRole --cli-input-json file://taskdef.json --region us-east-1"
 	sh "/usr/local/bin/aws ecs update-service --cluster jenkinsContainer --service jenkinsServiceName --task-definition arn:aws:ecs:us-east-1:527681342360:task-definition/first-run-task-definition --region us-east-1"
-        echo "App deployed to ECS Container"
+        echo "App deployed to ECS Container Change"
 }
 }
