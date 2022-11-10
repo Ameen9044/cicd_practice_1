@@ -30,7 +30,7 @@ def dockerImage()
 def pushtoAWS () {
 	stage ('Docker image push to AWS ECR') {
 	docker_repo_uri="527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1"
-	sh "/usr/local/bin/aws ecr get-login --region us-east-1 527681342360.dkr.ecr.us-east-1.amazonaws.com"
+	sh "/usr/local/bin/aws ecr get-login --no-include-email"
 	sh "/usr/local/bin/docker build -t hisoka_test_1 ."
 	sh "/usr/local/bin/docker tag hisoka_test_1:latest 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest"
 	sh "/usr/local/bin/docker push 527681342360.dkr.ecr.us-east-1.amazonaws.com/hisoka_test_1:latest"
