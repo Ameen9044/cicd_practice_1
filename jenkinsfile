@@ -19,6 +19,7 @@ def build() {
 	def mvnHome = tool 'M3'
         def javaHome = tool 'java1.8'
 	sh "JAVA_HOME=$javaHome $mvnHome/bin/mvn clean install"
+        sh "JAVA_HOME=$javaHome $mvnHome/bin/mvn package"
         echo "This is maven build"
     }
 }
