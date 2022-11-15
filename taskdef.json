@@ -12,6 +12,15 @@
                     "protocol": "tcp"
                 }
             ],
+             "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "awslogs-wordpress",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "awslogs-example"
+                }
+            },
             "essential": true
         }
     ],
